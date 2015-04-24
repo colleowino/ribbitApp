@@ -43,3 +43,6 @@ group :development, :test do
   gem 'spring'
 end
 
+#enable attr_accessible for old rails
+gem 'protected_attributes'
+
