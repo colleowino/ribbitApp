@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	def new
-	    @user = User.new
+    @user = User.new
 	end
 
 	def create
@@ -16,6 +16,13 @@ class UsersController < ApplicationController
 
 	def show
 	  @user = User.find(params[:id])
+	  @ribbit = Ribbit.new
+	  # flash[:error] = "Logged in! #{session[:userid]}"
 	end
+
+	# def index
+	# 	@user = User.first
+	# 	redirect_to @user
+	# end
 
 end
