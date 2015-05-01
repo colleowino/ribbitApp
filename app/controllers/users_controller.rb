@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 	def new
-    @user = User.new
+	    if current_user
+	        redirect_to buddies_path
+	    else
+	        @user = User.new
+	    end
 	end
+
 
 	def create
 	  @user = User.new(params[:user])
@@ -14,6 +19,16 @@ class UsersController < ApplicationController
 	  end
 	end
 
+	def buddies
+	    if current_user
+	        @ribbit = Ribbit.new
+	        buddies_ids = current_user.followeds.map(&:id).push(current_user.id)
+	        @ribbits = Ribbit.find_all_by_user_id buddies_ids
+	    else
+	        redirect_to root_url
+	    end
+	end
+	
 	def show
 	  @user = User.find(params[:id])
 	  @ribbit = Ribbit.new
@@ -25,9 +40,8 @@ class UsersController < ApplicationController
 		  # flash[:error] = "Logged in! #{session[:userid]}"
 	end
 
-	# def index
-	# 	@user = User.first
-	# 	redirect_to @user
-	# end
+	def index
+  	@users = User.all
+	end
 
 end

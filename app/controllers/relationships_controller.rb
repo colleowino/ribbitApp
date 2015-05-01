@@ -5,7 +5,8 @@ class RelationshipsController < ApplicationController
 	        @relationship.follower_id = current_user.id
 	 
 		    if @relationship.save
-		        redirect_to User.find params[:followed_id]
+		        redirect_to current_user
+		        # redirect_to User.find params[:followed_id]
 		    else
 		        flash[:error] = "Couldn't Follow"
 		        redirect_to root_url
@@ -18,5 +19,5 @@ class RelationshipsController < ApplicationController
 			    @relationship.destroy
 			    redirect_to user_path params[:id]
 			end
-			
+
 end
