@@ -17,7 +17,12 @@ class UsersController < ApplicationController
 	def show
 	  @user = User.find(params[:id])
 	  @ribbit = Ribbit.new
-	  # flash[:error] = "Logged in! #{session[:userid]}"
+
+	  @relationship = Relationship.where(
+    follower_id: current_user.id,
+    followed_id: @user.id
+		).first_or_initialize if current_user
+		  # flash[:error] = "Logged in! #{session[:userid]}"
 	end
 
 	# def index
