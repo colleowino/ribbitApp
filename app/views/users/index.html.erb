@@ -12,7 +12,7 @@
         <span class="spacing"><%= user.followers.count %> Followers</span>
         <span class="spacing"><%= user.followeds.count %> Following</span>
         </p>
-        <% if user.ribbits.first %>
+        <% if user.ribbits.last %>
         <p><%= user.ribbits.first.content %></p>
         <% end %>
     </div>
