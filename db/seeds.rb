@@ -5,3 +5,6 @@
 #
   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
    Mayor.create(name: 'Emanuel', city: cities.first)
+
+  towns = Tow.create([{name: 'Nairobi'}, {name: 'Mombasa'}])
+  
